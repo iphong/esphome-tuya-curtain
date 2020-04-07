@@ -1,0 +1,35 @@
+ota:
+wifi: 
+
+esphome:
+  name: curtain
+  platform: ESP8266
+  board: esp01_1m
+  includes:
+    - curtain.h
+  
+globals:
+  - id: cover_open
+    type: bool
+    restore_value: yes
+    initial_value: "false"
+  - id: cover_reversed
+    type: bool
+    restore_value: yes
+    initial_value: "false"
+  - id: cover_position
+    type: float
+    restore_value: yes
+    initial_value: "0"
+
+cover:
+  - platform: custom
+    lambda: |-
+      auto curtain = new CustomCover();
+      App.register_component(curtain);
+      return {curtain};
+    covers:
+      - id: cover_1
+        name: ${area} Curtain
+        device_class: blind
+    
