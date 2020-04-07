@@ -4,5 +4,6 @@ So i got my hands on one of these Tuya Curtain. But the Home Assistant integrati
 
 - Set curtain to any position
 - Realtime position feedback (even pull by hand)
+- Report following positions: open, openning, closed, closing
 - Hass Service for setting motor direction
 - Hass service for sending custom command
