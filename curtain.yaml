@@ -6,10 +6,10 @@ logger:
   baud_rate: 0
 
 # Fill in your own wifi settings
-wifi: !secret wifi
+wifi:
 
 esphome:
-  name: curtain
+  name: bedroom_curtain
   platform: ESP8266
   board: esp01_1m
   includes:
@@ -41,7 +41,9 @@ cover:
       App.register_component(curtain);
       return {curtain};
     covers:
-      - name: ${area} Curtain
+      - name: Curtain
         device_class: blind
-#         device_class: curtain
-    
+
+custom_component:
+  - lambda: |-
+      return { new CustomAPI() };
