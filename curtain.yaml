@@ -1,5 +1,12 @@
 ota:
-wifi: 
+api:
+logger:
+  # important because we are using uart0
+  # to communicate with Tuya MCU
+  baud_rate: 0
+
+# Fill in your own wifi settings
+wifi: !secret wifi
 
 esphome:
   name: curtain
@@ -7,7 +14,12 @@ esphome:
   board: esp01_1m
   includes:
     - curtain.h
-  
+uart:
+  - id: com_1
+    tx_pin: GPIO01
+    rx_pin: GPIO03
+    baud_rate: 9600
+
 globals:
   - id: cover_open
     type: bool
@@ -25,11 +37,11 @@ globals:
 cover:
   - platform: custom
     lambda: |-
-      auto curtain = new CustomCover();
+      auto curtain = new CustomCurtain();
       App.register_component(curtain);
       return {curtain};
     covers:
-      - id: cover_1
-        name: ${area} Curtain
+      - name: ${area} Curtain
         device_class: blind
+#         device_class: curtain
     
