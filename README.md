@@ -7,3 +7,7 @@ So i got my hands on one of these Tuya Curtain. But the Home Assistant integrati
 - Report following positions: open, openning, closed, closing
 - Hass Service for setting motor direction
 - Hass service for sending custom command
+
+## Demo video
+
+https://youtu.be/OGtZhjLm-no
